@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'incident#index'
+  root to: 'incident#index'
 end
