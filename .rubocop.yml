@@ -1,5 +1,17 @@
+require: rubocop-rails
+
 AllCops:
+  DisplayCopNames: true
   NewCops: enable
+
+Lint/MissingCopEnableDirective:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Rails/FilePath:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false
