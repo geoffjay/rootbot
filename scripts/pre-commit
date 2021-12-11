@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "Running pre-commit hooks"
+
+./scripts/rubocop.sh
+
+if [ $? -ne 0 ]; then
+ echo "rubocop must complete before commit"
+ exit 1
+fi
+
+./scripts/prettier.sh
+
+if [ $? -ne 0 ]; then
+ echo "run prettier with \"yarn fmt:prettier\""
+ exit 1
+fi
