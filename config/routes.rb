@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root to: 'main#index'
 
-  get '/incidents', to: 'incident#index'
+  resources :incidents
+
+  # slack endpoint route
+  post '/slack', to: 'slack#create'
 end

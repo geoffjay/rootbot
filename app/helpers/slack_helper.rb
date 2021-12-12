@@ -1,3 +1,3 @@
 # rubocop:disable Style/Documentation
-module IncidentHelper
+module SlackHelper
 end
