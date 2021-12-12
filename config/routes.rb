@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'incident#index'
+  root to: 'main#index'
+
+  get '/incidents', to: 'incident#index'
 end

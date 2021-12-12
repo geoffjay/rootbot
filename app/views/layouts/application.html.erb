@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html class="dark">
+<html>
   <head>
     <title>Rootbot</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body class="bg-black text-white font-sans">
-    <%= yield %>
+
+  <body>
+    <div class="bg-gray-100 text-gray-600 h-screen">
+      <%= render 'partials/header' %>
+      <main class="container mx-auto px-5 flex">
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>
