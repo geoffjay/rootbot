@@ -4,11 +4,23 @@ Slack bot to demonstrate slash commands using Ruby-on-Rails.
 
 ## Develop
 
-Create the file `config/local_env.yml` with the content:
+Create the file `config/local_env.yml`.
 
-```yaml
+```shell
+cat <<EOF>config/local_env.yml
 REDIS_URL: "redis://localhost:6379"
 SLACK_ROOTBOT_TOKEN: "token from app that was created"
+EOF
+```
+
+Create the file `.env`.
+
+```shell
+cat <<EOF>.env
+OVERMIND_NO_PORT=1
+RACK_ENV=development
+PORT=3000
+EOF
 ```
 
 Launch everything
@@ -37,4 +49,10 @@ Launch everything
 git push heroku main
 heroku ps:scale web=1
 heroku ps:scale worker+1
+```
+
+### Perform Database Migrations
+
+```shell
+heroku run rake db:migrate
 ```
