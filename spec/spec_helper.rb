@@ -9,17 +9,11 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-  end
+  config.before(:suite) { DatabaseCleaner.strategy = :truncation }
 
-  config.before do
-    DatabaseCleaner.start
-  end
+  config.before { DatabaseCleaner.start }
 
-  config.after do
-    DatabaseCleaner.clean
-  end
+  config.after { DatabaseCleaner.clean }
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end

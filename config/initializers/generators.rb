@@ -1,3 +1,1 @@
-Rails.application.config.generators do |g|
-  g.test_framework :rspec
-end
+Rails.application.config.generators { |g| g.test_framework :rspec }
