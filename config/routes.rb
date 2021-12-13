@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   # slack endpoint route
   post '/slack', to: 'slack#create'
+  post '/slack/interact', to: 'slack#interact'
 end

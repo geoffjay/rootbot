@@ -17,3 +17,6 @@ Rails/FilePath:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
