@@ -14,7 +14,7 @@ class SlackWorker
     begin
       send("handle_#{command}", params)
     rescue NoMethodError
-      # should never reach this
+      # should never reach here
     end
   end
 
