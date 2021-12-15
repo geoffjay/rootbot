@@ -14,6 +14,7 @@
 - better error handling
 - make a generic HTTP client so that I don't need to keep reading the API token
 - there's a lot of digs on the payload, using `to_h` wasn't working as expected
+- set the channel topic to something on create, and to "resolved on" on `resolve`
 
 ## Tests
 
