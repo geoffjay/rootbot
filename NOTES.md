@@ -2,6 +2,7 @@
 
 ## What would I Improve?
 
+- user, organization, and team models to support more than one instance
 - `creator` would have a model and incidents would have a relationship
 - incident statuses could come from a table
 - the severity list could be a list that the user could create
@@ -9,6 +10,10 @@
 - using `skip_before_action` in the incidents controller shouldn't be done in production
 - restrict `/slack` endpoint to appropriate source
 - handle CSRF correctly
+- didn't test all HTTP request responses
+- better error handling
+- make a generic HTTP client so that I don't need to keep reading the API token
+- there's a lot of digs on the payload, using `to_h` wasn't working as expected
 
 ## Tests
 
