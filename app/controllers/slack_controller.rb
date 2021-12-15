@@ -6,6 +6,8 @@ class SlackController < ApplicationController
 
   def create
     return json_response({}, :forbidden) unless valid_token?
+
+    # rubocop:disable Style/IfUnlessModifier
     unless supported_command?
       return json_response({ text: "`#{slack_command}` is not a supported command" }, :ok)
     end
