@@ -6,15 +6,22 @@
 - `creator` would have a model and incidents would have a relationship
 - incident statuses could come from a table
 - the severity list could be a list that the user could create
-- the `enum` types for an incident status and severity could be a class, [eg][enum]
-- using `skip_before_action` in the incidents controller shouldn't be done in production
+- the `enum` types for an incident status and severity could be a class,
+  [eg][enum]
+- using `skip_before_action` in the incidents controller shouldn't be done in
+  production
 - restrict `/slack` endpoint to appropriate source
 - handle CSRF correctly
 - didn't test all HTTP request responses
 - better error handling
 - make a generic HTTP client so that I don't need to keep reading the API token
 - there's a lot of digs on the payload, using `to_h` wasn't working as expected
-- set the channel topic to something on create, and to "resolved on" on `resolve`
+- set the channel topic to something on create, and to "resolved on" on
+  `resolve`
+- `prettier` does a better job than `rubocop` of formatting, but there are some
+  conflicts
+- calling resolved on a channel that's already been resolved should give an
+  appropriate message
 
 ## Tests
 

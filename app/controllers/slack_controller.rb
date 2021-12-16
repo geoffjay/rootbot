@@ -14,7 +14,7 @@ class SlackController < ApplicationController
 
     channel_name = params['channel_name']
     unless Incident.exists?(channel_name: channel_name)
-      message = { text: "unable to resolve, no incident for #{channel_name} was found" }
+      message = { text: "Unable to resolve, no incident for `#{channel_name}` was found" }
       return json_response(message, :ok) if slack_command == 'resolve'
     end
 

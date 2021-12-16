@@ -32,7 +32,6 @@ class SlackWorker
   def handle_declare(params)
     _command, title = params['text'].split(/ /, 2)
     message = {
-      # text: 'declare',
       trigger_id: params['trigger_id'],
       dialog: {
         title: 'Declare a New Incident',
@@ -61,21 +60,20 @@ class SlackWorker
     )
 
     api_token = ENV['SLACK_ROOTBOT_API_TOKEN']
-    _response =
-      Faraday.post(
-        'https://slack.com/api/dialog.open',
-        message.to_json,
-        { 'Content-Type' => 'application/json', 'Authorization' => "Bearer #{api_token}" },
-      )
-
-    # puts response.body
+    Faraday.post(
+      'https://slack.com/api/dialog.open',
+      message.to_json,
+      { 'Content-Type' => 'application/json', 'Authorization' => "Bearer #{api_token}" },
+    )
   end
 
-  def handle_resolve(_params)
-    message = { text: 'resolve' }
+  def handle_resolve(params)
+    channel_name = params['channel_name']
+    message = { text: "Marking the incident channel `#{channel_name}` as resolved" }
 
-    # only works in dedicated channel
-    # XXX: should incident record contain channel? probably, yes
+    # the controller checks for this to exist so it should be safe to pull it here
+    incident = Incident.find_by(channel_name: channel_name)
+    incident.update(status: 'resolved')
 
     Faraday.post(@url, message.to_json, 'Content-Type' => 'application/json')
   end
