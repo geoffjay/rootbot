@@ -1,11 +1,49 @@
-<div class="font-sans h-screen flex flex-col w-full">
-  <div class="max-w-lg mx-auto mt-16 text-center max-w-sm rounded overflow-hidden shadow-lg p-10">
-    <h1 class="mb-4 text-3xl font-white">Incidents</h1>
-    <p class="text-lg leading-snug">If this looks nice, it means Tailwind is set up properly.</p>
-    <% @incidents.each do |incident| %>
-      <div>
-        <span><%= incident.title %></span>
+<section class="antialiased mt-20 mx-auto w-full">
+  <div class="flex flex-col justify-center h-full w-full">
+    <div class="w-full mx-auto bg-white shadow-lg rounded-md border border-gray-200">
+      <header class="px-5 py-4 border-b border-gray-100">
+        <h2 class="font-semibold text-gray-800">Incidents</h2>
+      </header>
+      <div class="p-3">
+        <div class="overflow-x-auto">
+          <table class="table-auto w-full">
+            <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+              <tr>
+                <th class="p-2 whitespace-nowrap">
+                  <div class="font-semibold text-left">Title</div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                  <div class="font-semibold text-left">Description</div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                  <div class="font-semibold text-left">Severity</div>
+                </th>
+                <th class="p-2 whitespace-nowrap">
+                  <div class="font-semibold text-center">Creator</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-sm divide-y divide-gray-100">
+              <% @incidents.each do |incident| %>
+                <tr>
+                  <td class="p-2 whitespace-nowrap">
+                    <div class="font-medium text-gray-800"><%= incident.title %></div>
+                  </td>
+                  <td class="p-2 whitespace-nowrap">
+                    <div class="text-left"><%= incident.description %></div>
+                  </td>
+                  <td class="p-2 whitespace-nowrap">
+                    <div class="text-left font-medium text-green-500"><%= incident.severity %></div>
+                  </td>
+                  <td class="p-2 whitespace-nowrap">
+                    <div class="font-medium text-center"><%= incident.creator %></div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
+</section>
