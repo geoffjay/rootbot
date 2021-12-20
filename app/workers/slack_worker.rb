@@ -69,12 +69,30 @@ class SlackWorker
 
   def handle_resolve(params)
     channel_name = params['channel_name']
-    message = { text: "Marking the incident channel `#{channel_name}` as resolved" }
 
     # the controller checks for this to exist so it should be safe to pull it here
     incident = Incident.find_by(channel_name: channel_name)
     incident.update(status: 'resolved')
 
+    time_to_resolve = time_diff(incident.created_at, Time.now.utc)
+    message = {
+      text: "Marking the incident channel `#{channel_name}` as resolved after #{time_to_resolve}",
+    }
+
     Faraday.post(@url, message.to_json, 'Content-Type' => 'application/json')
+  end
+
+  def time_diff(start_time, end_time)
+    seconds = (start_time - end_time).to_i.abs
+
+    days = (seconds / 86_400).round
+    seconds -= days * 86_400
+
+    hours = (seconds / 3600).round
+    seconds -= hours * 3600
+
+    minutes = (seconds / 60).round
+
+    "#{days} days, #{hours} hours and #{minutes} minutes"
   end
 end
